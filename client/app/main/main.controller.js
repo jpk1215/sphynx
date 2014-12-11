@@ -38,20 +38,30 @@ angular.module('sphynxApp')
       return clean;
     }
 
-    function makeBostock (arr) {
-      var bostockObj = {};
-      var noNums = /\D/;
-      for (var i = 0; i < arr.length; i++) {
-        
-      };
-    } 
+    // function makeNate (arr) {
+    //   var nonNum = /\D/;
+    //   var nateObj = {
+    //     twoD: true,
+    //     pointLabels: []
+    //   }
+    //   for (var i = 0, var ii = arr.length; i < ii; i++) {
+    //     var count = 0;
+    //     for (var j = 0, var jj = arr[i].length; j < jj; j++) {
+    //       if(arr[i][j].match(nonNum)) {
+            
+    //       }
+    //     }
+    //   }
+    // } 
 
     $scope.filePick = function() {
       filepicker.setKey("Az7OkUN13Rs6HlHX403ZQz");
       filepicker.pick(function(Blob){
         filepicker.read(Blob, function(data){
+          console.time('filepick');   
           var myArr = clean2D(transpose(Papa.parse(data).data));
-          console.log(myArr);   
+          console.log(myArr);
+          console.timeEnd('filepick');
         });
       })
     }
