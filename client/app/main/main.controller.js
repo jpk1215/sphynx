@@ -9,17 +9,15 @@ angular.module('sphynxApp')
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
+    $scope.filePick = function() {
+      filepicker.setKey("Az7OkUN13Rs6HlHX403ZQz");
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
+      filepicker.pick(function(Blob){
+        filepicker.read(Blob, function(data){
+          console.log(Papa.parse(data))
+        })
+      })
+    }
 
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');
