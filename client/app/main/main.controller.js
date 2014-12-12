@@ -71,7 +71,6 @@ angular.module('sphynxApp')
           if (pointLabelFlag) {
             k = i-1
           }
-          console.log(axisHash[k]);
           nateObj[axisHash[k]] = arr[i];
         }
       }
@@ -82,10 +81,7 @@ angular.module('sphynxApp')
       filepicker.setKey("Az7OkUN13Rs6HlHX403ZQz");
       filepicker.pick(function(Blob){
         filepicker.read(Blob, function(data){
-          console.time('filepick');   
-          var myArr = makeNate(clean2D(transpose(Papa.parse(data).data)));
-          console.log(myArr);
-          console.timeEnd('filepick');
+          var graphObj = makeNate(clean2D(transpose(Papa.parse(data).data)));
         });
       })
     }
