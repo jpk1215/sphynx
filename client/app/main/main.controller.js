@@ -38,28 +38,52 @@ angular.module('sphynxApp')
       return clean;
     }
 
-    // function makeNate (arr) {
-    //   var nonNum = /\D/;
-    //   var nateObj = {
-    //     twoD: true,
-    //     pointLabels: []
-    //   }
-    //   for (var i = 0, var ii = arr.length; i < ii; i++) {
-    //     var count = 0;
-    //     for (var j = 0, var jj = arr[i].length; j < jj; j++) {
-    //       if(arr[i][j].match(nonNum)) {
-            
-    //       }
-    //     }
-    //   }
-    // } 
+    function makeNate (arr) {
+      var nonNum = /\D/;
+      var pointLabelFlag = false;
+      var axisHash = {
+        '0' : 'x',
+        '1' : 'y',
+        '2' : 'z',
+        '3' : 'size',
+        '4' : 'color'
+      }
+      var nateObj = {
+        type: undefined,
+        twoD: true,
+        pointLabels: []
+      }
+      for (var i = 0, ii = arr.length; i < ii; i++) {
+        var count = 0;
+        for (var j = 0, jj = arr[i].length; j < jj; j++) {
+          if(arr[i][j].match(nonNum)) {
+            count++;
+          }
+        }
+        if (count > 1) {
+          nateObj.pointLabels = arr[i];
+          pointLabelFlag = true;
+        } else if (count === 1) {
+          var axisKey = arr[i].shift();
+          nateObj[axisKey] = arr[i];
+        } else {
+          var k = i
+          if (pointLabelFlag) {
+            k = i-1
+          }
+          console.log(axisHash[k]);
+          nateObj[axisHash[k]] = arr[i];
+        }
+      }
+      return nateObj;
+    } 
 
     $scope.filePick = function() {
       filepicker.setKey("Az7OkUN13Rs6HlHX403ZQz");
       filepicker.pick(function(Blob){
         filepicker.read(Blob, function(data){
           console.time('filepick');   
-          var myArr = clean2D(transpose(Papa.parse(data).data));
+          var myArr = makeNate(clean2D(transpose(Papa.parse(data).data)));
           console.log(myArr);
           console.timeEnd('filepick');
         });
