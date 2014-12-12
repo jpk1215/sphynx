@@ -1,10 +1,6 @@
 // plot types:
-// 2d: scatter, line, bubble, histogram
-// 3d: scatter, bubble, colors
-
-//input from the form
-var twoD = true;
-var type = 'scatter';
+// 2d: scatter, histogram
+// 3d: 3dPlot
 
 var nateObj = {
   type: 'scatter',
@@ -13,31 +9,19 @@ var nateObj = {
   x: [1,2,3,4,5],
 }
 
-//arrays of chart option types
-var twoTypes = ['scatter','line','bubble','histogram'];
-var threeTypes = ['scatter','bubble','color'];
+console.log(makeBostock(nateObj));
 
-
+var makeBostock = function(nateObj){
 //SELECT GET FUNCTIONS BASED ON USER INPUT
-
-
-//getFunCall: THESE WILL ALSO NEED DATA, CONFIG, AND THE FUNCTION CALL
-
-
-// design the script
-var makeBostock = function(){
-  if (twoD){
-    if (type === 'histogram'){
-      return twoDStart() + getStart() + getHisto() + getFunCall() + twoDClose();
+  if (nateObj.twoD){
+    if (nateObj.type === 'histogram'){
+      return twoDStart() + getStart() + getHisto() + getFunCall(nateObj) + twoDClose();
     }
-    if (type === 'line'){
-      return twoDStart() + getStart() + getLine() + getFunCall() + twoDClose();
-    }
-    if (type === 'scatter'){
-      return twoDStart() + getStart() + getScatter() + getFunCall() + twoDClose();
-    }
-     if (type === 'scatter'){
-      return twoDStart() + getStart() + getScatter() + getFunCall() + twoDClose();
+    // if (type === 'line'){
+    //   return twoDStart() + getStart() + getLine() + getFunCall() + twoDClose();
+    // }
+    if (nateObj.type === 'scatter'){
+      return twoDStart() + getStart() + getScatter() + getFunCall(nateObj) + twoDClose();
     }
     else {
       return '';
@@ -77,7 +61,7 @@ var twoDClose = function(){
   return string;
 }
 
-var getFunCall = function(nateObj,type){
+var getFunCall = function(nateObj){
     if (nateObj.type === 'scatter' || nateObj.type === 'bubble'){
       var labels = ['xLab','yLab','sizeLab'];
       var string = '';
@@ -290,86 +274,86 @@ var getHisto = function(){
   return string;
 }
 
-var getLine = function(){
-  var string = "// BEGINNING OF XY PLOT FUNCTION
-  xyPlot = function(x,y,config){
-    if (typeof config === 'undefined'){config = {}};
-    var xLab=config.xLab,yLab=config.yLab,selector=config.selector,canvasWidth=config.width,canvasHeight=config.height;
+// var getLine = function(){
+//   var string = "// BEGINNING OF XY PLOT FUNCTION
+//   xyPlot = function(x,y,config){
+//     if (typeof config === 'undefined'){config = {}};
+//     var xLab=config.xLab,yLab=config.yLab,selector=config.selector,canvasWidth=config.width,canvasHeight=config.height;
 
-    if(typeof canvasWidth === 'undefined'){
-      canvasWidth = 500;
-    }
-    if(typeof canvasHeight === 'undefined'){
-      canvasHeight = 500;
-    }
-    if(typeof selector === 'undefined'){
-      selector = 'body';
-    }
+//     if(typeof canvasWidth === 'undefined'){
+//       canvasWidth = 500;
+//     }
+//     if(typeof canvasHeight === 'undefined'){
+//       canvasHeight = 500;
+//     }
+//     if(typeof selector === 'undefined'){
+//       selector = 'body';
+//     }
 
-    var xSort = x.slice().sort(function(a,b){
-        return a-b;
-    });
+//     var xSort = x.slice().sort(function(a,b){
+//         return a-b;
+//     });
 
-    var ySort = y.slice().sort(function(a,b){
-        return a-b;
-    });
-    var yMax = ySort[ySort.length-1];
-    var yMin = ySort[0];
-
-
-    var height = canvasHeight/1.3;
-    var width = canvasWidth/1.3;
-    if (canvasHeight - height < 75){height -= 45};
-
-    if (typeof x[0] !== 'number'){
-      if (typeof Date.parse(x[0]) === 'number'){
-        // if we're here, x[0] is a date
-        var xMap = d3.time.scale()
-                        .domain([new Date(x[0]),new Date(x[x.length-1])])
-                        .range([0,width]);
-        x.forEach(function(element,index){
-          x[index] = new Date(x[index]);
-        });
-      }
-    }
-    else{
-      // boundaries for numeric x
-      var xMax = xSort[xSort.length-1];
-      var xMin = xSort[0];
-
-      var xMap = d3.scale.linear()
-                      .domain([xMin,xMax])
-                      .range([0,width]);
-    }
-
-    var yMap = d3.scale.linear()
-                    .domain([yMax,yMin])
-                    .range([0,height]);
-
-    var objects = start(xLab,yLab,xMap,yMap,canvasWidth,canvasHeight,width,height,selector);
-
-    var canvas = objects[0];
-    var everything = objects[1];
-
-    for (var i=1;i<x.length;i++){
-      everything.append('line')
-                .attr('stroke-width',1)
-                .attr('stroke','black')
-                .attr('x1',xMap(x[i-1]))
-                .attr('x2',xMap(x[i]))
-                .attr('y1',yMap(y[i-1]))
-                .attr('y2',yMap(y[i]));
-    }
-
-    return canvas;
-
-  };
+//     var ySort = y.slice().sort(function(a,b){
+//         return a-b;
+//     });
+//     var yMax = ySort[ySort.length-1];
+//     var yMin = ySort[0];
 
 
-  ";
+//     var height = canvasHeight/1.3;
+//     var width = canvasWidth/1.3;
+//     if (canvasHeight - height < 75){height -= 45};
 
-  return string;
-};
+//     if (typeof x[0] !== 'number'){
+//       if (typeof Date.parse(x[0]) === 'number'){
+//         // if we're here, x[0] is a date
+//         var xMap = d3.time.scale()
+//                         .domain([new Date(x[0]),new Date(x[x.length-1])])
+//                         .range([0,width]);
+//         x.forEach(function(element,index){
+//           x[index] = new Date(x[index]);
+//         });
+//       }
+//     }
+//     else{
+//       // boundaries for numeric x
+//       var xMax = xSort[xSort.length-1];
+//       var xMin = xSort[0];
+
+//       var xMap = d3.scale.linear()
+//                       .domain([xMin,xMax])
+//                       .range([0,width]);
+//     }
+
+//     var yMap = d3.scale.linear()
+//                     .domain([yMax,yMin])
+//                     .range([0,height]);
+
+//     var objects = start(xLab,yLab,xMap,yMap,canvasWidth,canvasHeight,width,height,selector);
+
+//     var canvas = objects[0];
+//     var everything = objects[1];
+
+//     for (var i=1;i<x.length;i++){
+//       everything.append('line')
+//                 .attr('stroke-width',1)
+//                 .attr('stroke','black')
+//                 .attr('x1',xMap(x[i-1]))
+//                 .attr('x2',xMap(x[i]))
+//                 .attr('y1',yMap(y[i-1]))
+//                 .attr('y2',yMap(y[i]));
+//     }
+
+//     return canvas;
+
+//   };
+
+
+//   ";
+
+//   return string;
+// };
 
 var getScatter = function(){
   var string = "// START OF SCATTER FUNCTION
