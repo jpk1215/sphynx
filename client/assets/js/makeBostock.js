@@ -6,6 +6,13 @@
 var twoD = true;
 var type = 'scatter';
 
+var nateObj = {
+  type: 'scatter',
+  twoD: true,
+  pointLabels:[],
+  x: [1,2,3,4,5],
+}
+
 //arrays of chart option types
 var twoTypes = ['scatter','line','bubble','histogram'];
 var threeTypes = ['scatter','bubble','color'];
@@ -18,7 +25,7 @@ var threeTypes = ['scatter','bubble','color'];
 
 
 // design the script
-var getDoc = function(){
+var makeBostock = function(){
   if (twoD){
     if (type === 'histogram'){
       return twoDStart() + getStart() + getHisto() + getFunCall() + twoDClose();
@@ -70,9 +77,47 @@ var twoDClose = function(){
   return string;
 }
 
-var getFunCall = function(){
-  var string = ; //get data, config, and call function
-  return string;
+var getFunCall = function(nateObj,type){
+    if (nateObj.type === 'scatter' || nateObj.type === 'bubble'){
+      var labels = ['xLab','yLab','sizeLab'];
+      var string = '';
+
+      delete nateObj.pointLabels;
+      delete nateObj.type;
+      delete nateObj.twoD;
+
+      var keys = Object.keys(nateObj);
+      //defines variables
+      var labelString = "";
+      var callString = "";
+      keys.forEach(function(key,i){
+          string += 'var '+key+'= ['+nateObj[key]+"]; \n";
+          labelString += labels[i] +": "+ key +", ";
+          callString += key+',';
+      });
+      var sizeString = "";
+      if (keys.length === 3){
+          sizeString += "size: ["+nateObj[keys[2]]+"]";
+      }
+      string += "var config = {" + labelString + sizeString +"};\n";
+      string += "scatter("+callString+"config)";
+      return string
+    }
+    //histo
+    if (nateObj.type === 'histogram'){
+      var labels = ['xLab'];
+      var string = '';
+
+      delete nateObj.pointLabels;
+      delete nateObj.type;
+      delete nateObj.twoD;
+
+      var key = Object.keys(nateObj)[0];
+      string += 'var '+key+'= ['+nateObj[key]+"]; \n";
+      string += "var config = {xLab: " + key + "};\n";
+      string += "histo("+key+", config);";
+      return string;
+    }
 }
 
 var getStart = function(){
