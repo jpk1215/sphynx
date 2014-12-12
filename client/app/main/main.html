@@ -1,38 +1,107 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
-      </ul>
+<div class="main-container">
+    <section class="hero-slider">
+        <ul class="slides">
+          <li class="overlay">
+            <div class="background-image-holder parallax-background">
+              <img alt="Background Image" src="img/hero4.jpg">
+            </div>
+            
+            <div class="video-wrapper">
+              <video autoplay="" muted="" loop="">
+                <source src="assets/video/video.webm" type="video/webm">
+                <source src="assets/video/video.mp4" type="video/mp4">
+                <source src="assets/video/video.ogv" type="video/ogg"> 
+              </video>
+            </div>
+            
+            <div class="container align-vertical">
+              <div class="row">
+                <div class="col-sm-9 col-md-8">
+                  <h1 class="text-white">Prepare for a revolution in music discovery.<div>Our new app is launching soon.</div></h1>
+                  <a target="_blank" href="http://www.mediumra.re/pivot/variant/builder.html" class="btn btn-primary btn-white">Customize Pivot</a>
+                  <a href="#" class="btn btn-primary btn-filled">Purchase Pivot</a>
+                </div>
+              </div>
+            </div><!--end of container-->
+          </li><!--end of individual slide-->
+          
+          <!--end of individual slide-->
+    
+        </ul>
+      </section>
+      
+      <section class="strip bg-primary">
+        <div class="container">
+          <div class="row clearfix">
+            <form class="mail-list-signup">
+              <div class="col-sm-9 col-xs-12 pull-left clear-fix">
+                <h3 class="text-white pull-left"><strong>Get Notified.&nbsp;</strong></h3>
+                <input type="text" class="signup-email-field validate-email validate-required" placeholder="Enter your email here here">
+              </div>
+              
+              <div class="col-sm-3 col-xs-12 pull-right text-right">
+                <input type="submit" class="btn btn-primary btn-filled" value="Subscribe">
+              </div>
+            </form>
+          </div>
+          
+        </div>
+        <iframe class="mail-list-form" srcdoc="<!-- Begin MailChimp Signup Form --> <link href=&quot;//cdn-images.mailchimp.com/embedcode/slim-081711.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;> <style type=&quot;text/css&quot;>   #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }   /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */ </style> <div id=&quot;mc_embed_signup&quot;> <form action=&quot;//mrare.us8.list-manage.com/subscribe/post?u=77142ece814d3cff52058a51f&amp;amp;id=2810699d9e&quot; method=&quot;post&quot; id=&quot;mc-embedded-subscribe-form&quot; name=&quot;mc-embedded-subscribe-form&quot; class=&quot;validate&quot; target=&quot;_blank&quot; novalidate>   <label for=&quot;mce-EMAIL&quot;>Subscribe to our mailing list</label>  <input type=&quot;email&quot; value=&quot;&quot; name=&quot;EMAIL&quot; class=&quot;email&quot; id=&quot;mce-EMAIL&quot; placeholder=&quot;email address&quot; required>     <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->     <div style=&quot;position: absolute; left: -5000px;&quot;><input type=&quot;text&quot; name=&quot;b_77142ece814d3cff52058a51f_2810699d9e&quot; tabindex=&quot;-1&quot; value=&quot;&quot;></div>     <div class=&quot;clear&quot;><input type=&quot;submit&quot; value=&quot;Subscribe&quot; name=&quot;subscribe&quot; id=&quot;mc-embedded-subscribe&quot; class=&quot;button&quot;></div> </form> </div>  <!--End mc_embed_signup-->">
+        </iframe>
+      </section>
+      
+      <section class="duplicatable-content">
+      
+        <div class="container">
+          <!--end of row-->
+    
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="feature feature-icon-large">
+                <div class="pull-left">
+                  <i class="icon icon-genius"></i>
+                </div>
+                <div class="pull-right">
+                  <h5>Distinct Visual Style</h5>
+                  <p>
+                    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+                  </p>
+                </div>
+              </div>
+            </div><!--end 6 col-->
+            
+            <div class="col-sm-4">
+              <div class="feature feature-icon-large">
+                <div class="pull-left">
+                  <i class="icon icon-linegraph"></i>
+                </div>
+                <div class="pull-right">
+                  <h5>Multiple Demos</h5>
+                  <p>
+                    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+                  </p>
+                </div>
+              </div>
+            </div><!--end 6 col-->
+            
+            <div class="col-sm-4">
+              <div class="feature feature-icon-large">
+                <div class="pull-left">
+                  <i class="icon icon-tools-2"></i>
+                </div>
+                <div class="pull-right">
+                  <h5>Flexible Page Builder</h5>
+                  <p>
+                    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+                  </p>
+                </div>
+              </div>
+            </div><!--end 6 col-->
+            
+            <!--end 6 col-->
+            
+          </div><!--end of row-->
+        </div>
+      
+      </section>
     </div>
-  </div>
-
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
-</div>
-
-<footer class="footer">
-  <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div>
-</footer>
