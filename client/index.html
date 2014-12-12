@@ -20,14 +20,29 @@
       <!-- injector:css -->
       <!-- endinjector -->
     <!-- endbuild -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700%7CRaleway:700' rel='stylesheet' type='text/css'>
   </head>
   <body ng-app="sphynxApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <!-- Loader -->
+    <div class="loader">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <div ng-include="'components/navbar/navbar.html'"></div>
+
     <!-- Add your site or application content here -->
     <div ui-view=""></div>
+
+    <!-- Footer -->
+    <div ng-include="'components/footer/footer.html'"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -58,6 +73,18 @@
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
+
+      <script src="assets/js/jquery.plugin.min.js"></script>
+      <script src="assets/js/jquery.flexslider-min.js"></script>
+      <script src="assets/js/smooth-scroll.min.js"></script>
+      <script src="assets/js/skrollr.min.js"></script>
+      <script src="assets/js/spectragram.min.js"></script>
+      <script src="assets/js/scrollReveal.min.js"></script>
+      <script src="assets/js/isotope.min.js"></script>
+      <script src="assets/js/twitterFetcher_v10_min.js"></script>
+      <script src="assets/js/lightbox.min.js"></script>
+      <script src="assets/js/jquery.countdown.min.js"></script>
+      <script src="assets/js/scripts.js"></script>
 
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
