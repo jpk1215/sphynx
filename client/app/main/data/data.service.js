@@ -76,7 +76,7 @@ angular.module('sphynxApp')
 
     function set (rawData, type, twoD) {
       nateObj.type = type || 'histogram';
-      nateObj.twoD = twoD || true;
+      nateObj.twoD = twoD;
       return makeNate(clean2D(transpose(Papa.parse(rawData).data)));
     }
 
