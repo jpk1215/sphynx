@@ -1,0 +1,21 @@
+.btn-primary.btn-filled {
+    background: #8C5AA9;
+    border-color: #8C5AA9;
+}
+
+.top-bar .logo {
+    max-width: 100px;
+    position: relative;
+    bottom: 16px;
+}
+
+.hero-slider .slides li.overlay:before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  content: '';
+  opacity: 0.8;
+  z-index: 2;
+  background-color: #222222;
+}
