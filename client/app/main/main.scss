@@ -1,6 +1,11 @@
+$green: #8fb359;
+
 .btn-primary.btn-filled {
-    background: #8C5AA9;
-    border-color: #8C5AA9;
+    background: $green;
+    border-color: $green;
+    span {
+        margin-left: 5px;   
+    }
 }
 
 .top-bar .logo {
@@ -60,6 +65,17 @@
                 display: block;
                 bottom: -25px;
             }            
+        }
+    }
+}
+
+.duplicatable-content {
+    .btn-filled {
+        margin-top: 10px;
+        background: #8fb359;
+        border-color: #8fb359;
+        span {
+            margin-left: 5px;
         }
     }
 }
