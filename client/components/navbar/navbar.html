@@ -38,123 +38,31 @@
 
       <div class="row nav-menu">
         <div class="col-sm-3 col-md-2 columns">
-          <a href="index.html">
+          <a href="/">
           <img class="logo logo-light" alt="Logo" src="assets/img/logo-light.png">
             <img class="logo logo-dark" alt="Logo" src="assets/img/logo-dark.png">
           </a>
         </div>
 
         <div class="col-sm-9 col-md-10 columns">
-          <ul class="menu">
-            <li class="has-dropdown"><a href="#">Home Pages</a>
-              <div class="subnav subnav-fullwidth">
-                <div class="col-md-3">
-                  <h6 class="alt-font">Home Layouts</h6>
-                  <ul class="subnav">
-                    <li><a href="index.html">Home Classic</a></li>
-                    <li><a href="home-2.html">Home Education</a></li>
-                    <li><a href="home-3.html">Home Business</a></li>
-                    <li><a href="home-4.html">Home Agency</a></li>
-                  </ul> 
-                </div>
-
-                <div class="col-md-3">
-                  <h6 class="alt-font">Home Layouts</h6>
-                  <ul class="subnav">
-                    <li><a href="home-5.html">Home Corporate</a></li>
-                    <li><a href="personal.html">Home Personal</a></li>
-                    <li><a href="launching-soon-2.html">Service Launch</a></li>
-                    <li><a href="launching-soon.html">Product Launch</a></li>
-                  </ul> 
-                </div>
-
-                <div class="col-md-3">
-                  <h6 class="alt-font">Home Layouts</h6>
-                  <ul class="subnav">
-                    <li><a href="home-resume.html">Home Resume</a></li>
-                    <li><a href="launching-soon-3.html">Launch with video</a></li>
-                    <li><a href="coming-soon.html">Launch with countdown</a></li> 
-                    <li><a href="one-page.html">One Page</a></li>
-                  </ul> 
-                </div>
-
-                <div class="col-md-3">
-                  <a class="btn btn-primary" href="http://www.mediumra.re/pivot/variant/builder.html">Build your own</a>
-                  <a class="btn btn-primary btn-filled" href="#">Purchase Pivot</a>
-                </div>
-              </div>
+          <ul class="menu pull-right">
+            <li><a href="/">Home</a>
             </li>
-            <li class="has-dropdown"><a href="#">Pages</a>
-              <ul class="subnav">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="about-2.html">About Us 2</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="services-2.html">Services 2</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="404.html">404 Error</a></li>
-                <li><a href="500.html">500 Error</a></li>
+            <li class="has-dropdown"><a href="#">Plots</a>
+              <ul class="subnav" ng-controller="MainCtrl">
+                <li><a ng-click="filePick('histogram', true)">Histogram</a></li>
+                <li><a ng-click="filePick('scatter', true)">2D Scatter Plot</a></li>
+                <li><a ng-click="filePick('scatter', false)">3D Scatter Plot</a></li>
               </ul>
             </li>
-            <li class="has-dropdown"><a variant-closest-mrv="parent" href="#">Blog</a>
-              <div class="subnav subnav-halfwidth">
-                <div class="col-sm-6">
-                  <h6 class="alt-font">Article Lists</h6>
-                  <ul class="subnav">
-                    <li><a href="blog-masonry.html">Masonry</a></li>
-                    <li><a href="blog-masonry-sidebar.html">Masonry Sidebar</a></li>
-                    <li><a href="blog.html">Blog Large List</a></li>
-                    <li><a href="blog-large-image.html">Blog Image List</a></li>
-                  </ul> 
-                </div>
-                
-                <div class="col-sm-6">
-                  <h6 class="alt-font">Article Singles</h6>
-                  <ul class="subnav">
-                    <li><a href="blog-single.html">Article Basic</a></li>
-                    <li><a href="blog-single-2.html">Article Basic 2</a></li>
-                    <li><a href="blog-single-sidebar.html">Article Sidebar</a></li>
-                    <li><a href="blog-single-media.html">Article Media</a></li>
-                  </ul> 
-                </div>
-              </div>
+            <li><a href="/about">About</a>
             </li>
-            <li class="has-dropdown"><a href="#">Projects</a>
-              <ul class="subnav">
-                <li><a href="projects.html">Projects Fullwidth</a></li>
-                <li><a href="projects-2.html">Projects Contained</a></li>
-                <li><a href="project-single-2.html">Project Single</a></li>
-                <li><a href="project-single.html">Project Single 2</a></li>
-              </ul>
+            <li><a href="blog.fullstackacademy.com">Blog</a>
             </li>
-            <li class="has-dropdown"><a href="#">Contact</a>
-              <ul class="subnav">
-                <li><a href="contact-3.html">Large Map</a></li>
-                <li><a href="contact-2.html">Map with form</a></li>
-                <li><a href="contact.html">Header with form</a></li>
-                <li><a href="contact-4.html">Fullscreen photo</a></li>
-              </ul>
+            <li><a href="/contact">Contact</a>
             </li>
           </ul>
 
-          <ul class="social-icons text-right">
-            <li>
-              <a href="#">
-                <i class="icon social_twitter"></i>
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                <i class="icon social_facebook"></i>
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                <i class="icon social_instagram"></i>
-              </a>
-            </li>
-          </ul>
         </div>
       </div><!--end of row-->
 
