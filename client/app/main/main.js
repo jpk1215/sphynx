@@ -14,6 +14,7 @@ angular.module('sphynxApp')
       })
       .state('parent.view', {
       	url: '/view',
-      	templateUrl: 'app/main/view.html'
-      })
+      	templateUrl: 'app/main/view.html',
+        controller: 'ViewCtrl'
+      });
   });
