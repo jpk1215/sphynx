@@ -11,9 +11,11 @@
 
 var _ = require('lodash');
 var Thing = require('./thing.model');
+var makeBostock = require('../../components/js/makeBostock');
 
 // Get list of things
 exports.index = function(req, res) {
+  console.log(makeBostock);
   Thing.find(function (err, things) {
     if(err) { return handleError(res, err); }
     return res.json(200, things);

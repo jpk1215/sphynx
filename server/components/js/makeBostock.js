@@ -135,7 +135,7 @@ var threeDStart = function(){
 };
 
 
-var nateObj = {
+var testObj = {
   type: 'scatter',
   twoD: false,
   pointLabels:[],
@@ -147,4 +147,6 @@ var nateObj = {
 };
 
 
-
+module.exports = {
+  bostock: makeBostock
+}
