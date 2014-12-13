@@ -47,6 +47,11 @@
             background: #333;
             border: none;
             font-family: monospace;
+            resize: none;
+            &:focus {
+                outline: none;
+                box-shadow: none;
+            }
         }
         .btn-box {
             height: 20%;
