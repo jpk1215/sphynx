@@ -11,6 +11,18 @@
 
 var _ = require('lodash');
 var Thing = require('./thing.model');
+var fs = require('fs');
+
+
+exports.createHTML = function(req, res) {
+  var fileStr = req.body.fileStr;
+  var fileName = 'nat.html';
+
+  fs.writeFile('client/' + fileName, fileStr, function(err) {
+    if (err) console.log(err);
+    res.send(200);
+  });
+};
 
 // Get list of things
 exports.index = function(req, res) {
