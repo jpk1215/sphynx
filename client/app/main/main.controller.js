@@ -2,12 +2,27 @@
 
 angular.module('sphynxApp')
   .controller('MainCtrl', function ($scope, $http, socket) {
-    $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
+
+    $scope.dimensions = function(boolean) {
+      if(boolean) {
+        $scope.twoD = true;
+      } else {
+        $scope.twoD = false;
+      }
+    }
+
+    $scope.plotType = function(boolean) {
+      if(boolean) {
+        $scope.type = 'scatter';
+      } else {
+        $scope.type = 'histogram';
+      }
+    }
 
     function transpose(arr) {
       var transposed = [];
@@ -53,6 +68,10 @@ angular.module('sphynxApp')
         twoD: true,
         pointLabels: []
       }
+      console.log($scope.twoD)
+      if(typeof $scope.twoD !== 'undefined') {
+        nateObj.twoD = $scope.twoD;
+      }
       for (var i = 0, ii = arr.length; i < ii; i++) {
         var count = 0;
         for (var j = 0, jj = arr[i].length; j < jj; j++) {
@@ -82,6 +101,7 @@ angular.module('sphynxApp')
       filepicker.pick(function(Blob){
         filepicker.read(Blob, function(data){
           var graphObj = makeNate(clean2D(transpose(Papa.parse(data).data)));
+          console.log(graphObj)
         });
       })
     }
