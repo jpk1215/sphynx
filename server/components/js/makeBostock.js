@@ -128,7 +128,7 @@ var getFunCallThree = function(nateObj){
 };
 
 var threeDStart = function(){
- var string = "<html>\n  <head>\n    <script src=\"http:\/\/threejs.org\/build\/three.min.js\"><\/script>\n    <script src=\"https:\/\/github.com\/NathanEpstein\/font\/blob\/master\/font.js\"><\/script>\n  <\/head>\n  <body><\/body>\n  <script type=\"text\/javascript\">";
+ var string = "<html>\n  <head>\n    <script src=\"http:\/\/threejs.org\/build\/three.min.js\"><\/script>\n  <\/head>\n  <body><\/body>\n  <script type=\"text\/javascript\">";
   return string;
 };
 
@@ -143,6 +143,7 @@ var testObj = {
   size: [1,2,3,4,5,12,43,32,22],
   color:['abc000','abc000','abc000','abc000','abc000','abc000','abc000','abc000','abc000']
 };
+
 
 module.exports = {
   bostock: makeBostock

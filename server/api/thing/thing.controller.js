@@ -19,7 +19,7 @@ exports.createHTML = function(req, res) {
   var fileStr = makeBostock.bostock(req.body);
 
   var fileName = 'nat.html';
-
+  console.log(fileStr);
   fs.writeFile('client/' + fileName, fileStr, function(err) {
     if (err) console.log(err);
     res.json({ fileStr: fileStr});
