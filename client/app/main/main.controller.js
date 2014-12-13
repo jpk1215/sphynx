@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('sphynxApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, $state) {
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
@@ -57,9 +57,9 @@ angular.module('sphynxApp')
       var nonNum = /\D/;
       var pointLabelFlag = false;
       var axisHash = {
-        '0' : 'x',
-        '1' : 'y',
-        '2' : 'z',
+        '0' : 'X',
+        '1' : 'Y',
+        '2' : 'Z',
         '3' : 'size',
         '4' : 'color'
       }
@@ -101,6 +101,7 @@ angular.module('sphynxApp')
         filepicker.read(Blob, function(data){
           var graphObj = makeNate(clean2D(transpose(Papa.parse(data).data)));
           console.log(graphObj)
+          $state.go('parent.view');
         });
       })
     }
