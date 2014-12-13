@@ -12,10 +12,22 @@
 var _ = require('lodash');
 var Thing = require('./thing.model');
 var makeBostock = require('../../components/js/makeBostock');
+var fs = require('fs');
+
+
+exports.createHTML = function(req, res) {
+  var fileStr = makeBostock.bostock(req.body);
+
+  var fileName = 'nat.html';
+  console.log(fileStr);
+  fs.writeFile('client/' + fileName, fileStr, function(err) {
+    if (err) console.log(err);
+    res.json({ fileStr: fileStr});
+  });
+};
 
 // Get list of things
 exports.index = function(req, res) {
-  console.log(makeBostock);
   Thing.find(function (err, things) {
     if(err) { return handleError(res, err); }
     return res.json(200, things);
