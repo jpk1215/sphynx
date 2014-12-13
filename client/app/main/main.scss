@@ -79,3 +79,21 @@ $green: #8fb359;
         }
     }
 }
+
+footer.details {
+    background: #222;
+    color: white;
+    h1 {
+        color: #777;
+    }
+    .sub {
+        a {
+            color: $green;
+        }
+    }
+    .social-icons {
+        i {
+            color: #777;
+        }
+    }
+}
