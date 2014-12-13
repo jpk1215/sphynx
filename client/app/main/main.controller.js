@@ -64,11 +64,10 @@ angular.module('sphynxApp')
         '4' : 'color'
       }
       var nateObj = {
-        type: undefined,
+        type: $scope.type,
         twoD: true,
         pointLabels: []
       }
-      console.log($scope.twoD)
       if(typeof $scope.twoD !== 'undefined') {
         nateObj.twoD = $scope.twoD;
       }
