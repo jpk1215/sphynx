@@ -1,4 +1,5 @@
-![Sphynx](http://i.imgur.com/6qbIuRH.png)
+![Sphynx](http://i.imgur.com/DZeqakF.png)
+---------------------------------------
 
 ## Synopsis
 
@@ -7,10 +8,10 @@ Sphynx is an interactive data visualization tool that is easy to use by anyone. 
 ## Installation
 
 Please follow these guidelines to use Sphynx on your local machine.
-- Clone the repository
-- `npm install`
-- `bower install`
-- Start MongoDB
+* Clone the repository
+* `npm install`
+* `bower install`
+* Start MongoDB
 
 ### Running the Application
 
@@ -23,11 +24,11 @@ To run the tests, type `grunt test`
 ## Contributors
 
 The following people are contributors to the repository:
-- Nathan Epstein [LinkedIn](https://www.linkedin.com/profile/view?id=283389306) [GitHub](https://github.com/NathanEpstein)
-- Jeffrey Klaus [LinkedIn](https://www.linkedin.com/profile/view?id=153055915) [GitHub](https://github.com/jpk1215)
-- Gabriel Lebec [LinkedIn](https://www.linkedin.com/profile/view?id=353777953) [GitHub](https://github.com/glebec)
-- Christan Sakai [LinkedIn](https://www.linkedin.com/profile/view?id=364629079) [GitHub](https://github.com/christiansakai)
-- Oddur Sigurdsson [LinkedIn](https://www.linkedin.com/profile/view?id=54084202) [GitHub](https://github.com/oddurs)
+* Nathan Epstein [LinkedIn](https://www.linkedin.com/profile/view?id=283389306) [GitHub](https://github.com/NathanEpstein)
+* Jeffrey Klaus [LinkedIn](https://www.linkedin.com/profile/view?id=153055915) [GitHub](https://github.com/jpk1215)
+* Gabriel Lebec [LinkedIn](https://www.linkedin.com/profile/view?id=353777953) [GitHub](https://github.com/glebec)
+* Christan Sakai [LinkedIn](https://www.linkedin.com/profile/view?id=364629079) [GitHub](https://github.com/christiansakai)
+* Oddur Sigurdsson [LinkedIn](https://www.linkedin.com/profile/view?id=54084202) [GitHub](https://github.com/oddurs)
 
 ## License
 
