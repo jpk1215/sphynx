@@ -1,204 +1,21 @@
 'use strict';
 
 angular.module('sphynxApp')
-  .controller('ViewCtrl', function ($scope, $http) {
-    $scope.test = true;
-
-    $scope.test = function() {
-      var text = "<object style='width: 100%; height: 700px;' data='nat.html'>" + "</object>";
-
-      $('.rendered-graph').append(text);
-    };
-
+  .controller('ViewCtrl', function ($scope, $http, data) {
      var createFileAndRender = function() {
-        var strVar="";
-            strVar += "<html>";
-            strVar += "  <head>";
-            strVar += "    <script src=\"http:\/\/d3js.org\/d3.v3.min.js\" charset=\"utf-8\"><\/script>";
-            strVar += "    <style type=\"text\/css\">";
-            strVar += "      svg path, svg line{";
-            strVar += "        fill:none;";
-            strVar += "        stroke:black;";
-            strVar += "      }";
-            strVar += "      svg text {";
-            strVar += "        font-family: sans-serif;";
-            strVar += "        font-size: 11px;";
-            strVar += "      }";
-            strVar += "    <\/style>";
-            strVar += "  <\/head>";
-            strVar += "  <body><\/body>";
-            strVar += "  <script type=\"text\/javascript\">";
-            strVar += "var start = function(xLab,yLab,xMap,yMap,canvasWidth,canvasHeight,width,height,selector) {";
-            strVar += "";
-            strVar += "  var canvas = d3.select(selector)";
-            strVar += "                .append('svg')";
-            strVar += "                .attr('height',canvasHeight)";
-            strVar += "                .attr('width', canvasWidth);";
-            strVar += "";
-            strVar += "  var everything = canvas.append('g');";
-            strVar += "";
-            strVar += "  everything.attr('transform','translate('+(width * 0.2)+','+height*0.1+')');";
-            strVar += "";
-            strVar += "  var xAxis = d3.svg.axis()";
-            strVar += "              .scale(xMap);";
-            strVar += "";
-            strVar += "  var yAxis = d3.svg.axis()";
-            strVar += "              .scale(yMap)";
-            strVar += "              .orient('left');";
-            strVar += "";
-            strVar += "  everything.append('g')";
-            strVar += "        .attr('transform','translate(0,'+height+')')";
-            strVar += "        .call(xAxis);";
-            strVar += "";
-            strVar += "  everything.append('g')";
-            strVar += "        .call(yAxis);";
-            strVar += "";
-            strVar += "  var xLabel = everything.append('text')";
-            strVar += "              .attr('x',canvasWidth*0.4)";
-            strVar += "              .attr('y',height+45)";
-            strVar += "              .text(xLab)";
-            strVar += "              .attr('text-anchor','middle');";
-            strVar += "";
-            strVar += "  var yLabel = everything.append('text')";
-            strVar += "              .attr('x', -canvasHeight*0.4)";
-            strVar += "              .attr('y', -canvasWidth*0.1)";
-            strVar += "              .attr('transform','rotate(-90)')";
-            strVar += "              .text(yLab)";
-            strVar += "              .attr('text-anchor','middle');";
-            strVar += "";
-            strVar += "  var objects = [canvas,everything];";
-            strVar += "  return objects;";
-            strVar += "";
-            strVar += "};";
-            strVar += "";
-            strVar += "scatter = function(x,y,config) {";
-            strVar += "  if (typeof config === 'undefined'){";
-            strVar += "    config = {};";
-            strVar += "  }";
-            strVar += "";
-            strVar += "  var xLab=config.xLab,yLab=config.yLab,selector=config.selector,canvasWidth=config.width,canvasHeight=config.height,z=config.size,zLab=config.sizeLab;";
-            strVar += "";
-            strVar += "  if(typeof canvasWidth === 'undefined'){";
-            strVar += "    canvasWidth = 500;";
-            strVar += "  }";
-            strVar += "  if(typeof canvasHeight === 'undefined'){";
-            strVar += "    canvasHeight = 500;";
-            strVar += "  }";
-            strVar += "  if(typeof selector === 'undefined'){";
-            strVar += "    selector = 'body';";
-            strVar += "  }";
-            strVar += "";
-            strVar += "  var xSort = x.slice().sort(function(a,b){";
-            strVar += "        return a-b;";
-            strVar += "  });";
-            strVar += "";
-            strVar += "  var ySort = y.slice().sort(function(a,b){";
-            strVar += "        return a-b;";
-            strVar += "    });";
-            strVar += "";
-            strVar += "  if (typeof z !== 'undefined'){";
-            strVar += "    var zSort = z.slice().sort(function(a,b){";
-            strVar += "          return a-b;";
-            strVar += "    });";
-            strVar += "  }";
-            strVar += "";
-            strVar += "  var yMax = ySort[ySort.length-1];";
-            strVar += "  var yMin = ySort[0];";
-            strVar += "";
-            strVar += "  var height = canvasHeight\/1.3;";
-            strVar += "  var width = canvasWidth\/1.3;";
-            strVar += "  if (canvasHeight - height < 75){height -= 45};";
-            strVar += "";
-            strVar += "  if (typeof x[0] !== 'number'){";
-            strVar += "    if (typeof Date.parse(x[0]) === 'number'){";
-            strVar += "";
-            strVar += "      var xMap = d3.time.scale()";
-            strVar += "                      .domain([new Date(x[0]),new Date(x[x.length-1])])";
-            strVar += "                      .range([0,width]);";
-            strVar += "      x.forEach(function(element,index){";
-            strVar += "        x[index] = new Date(x[index]);";
-            strVar += "      });";
-            strVar += "    }";
-            strVar += "  }";
-            strVar += "  else{";
-            strVar += "";
-            strVar += "    var xMax = xSort[xSort.length-1];";
-            strVar += "    var xMin = xSort[0];";
-            strVar += "";
-            strVar += "    var xMap = d3.scale.linear()";
-            strVar += "                    .domain([xMin,xMax])";
-            strVar += "                    .range([0,width]);";
-            strVar += "  }";
-            strVar += "";
-            strVar += "  var yMap = d3.scale.linear()";
-            strVar += "                  .domain([yMax,yMin])";
-            strVar += "                  .range([0,height]);";
-            strVar += "";
-            strVar += "  if (typeof zLab !== 'undefined'){yLab = yLab+' ('+zLab+')';};";
-            strVar += "  var objects = start(xLab,yLab,xMap,yMap,canvasWidth,canvasHeight,width,height,selector);";
-            strVar += "";
-            strVar += "  var canvas = objects[0];";
-            strVar += "  var everything = objects[1];";
-            strVar += "";
-            strVar += "";
-            strVar += "  x.forEach(function(elem,index){";
-            strVar += "    everything.append('circle')";
-            strVar += "              .attr('r',function(){";
-            strVar += "                if (typeof z === 'undefined'){";
-            strVar += "                  return height*width*(0.00002);";
-            strVar += "                }";
-            strVar += "                else{";
-            strVar += "                  return (height*width*0.000025 + (z[index]-zSort[0])*(height*width*(0.0001))\/(zSort[zSort.length-1] - zSort[0]));";
-            strVar += "                }";
-            strVar += "              })";
-            strVar += "              .attr('cx',xMap(x[index]))";
-            strVar += "              .attr('cy',yMap(y[index]))";
-            strVar += "              .attr('opacity',function(){";
-            strVar += "                if (typeof z === 'undefined'){";
-            strVar += "                  return 1;";
-            strVar += "                }";
-            strVar += "                else{";
-            strVar += "                  return 0.3;";
-            strVar += "                }";
-            strVar += "              })";
-            strVar += "              .attr('fill',function(){";
-            strVar += "                if (typeof z === 'undefined'){";
-            strVar += "                  return 'none';";
-            strVar += "                }";
-            strVar += "                else{";
-            strVar += "                  return 'steelBlue';";
-            strVar += "                }";
-            strVar += "              })";
-            strVar += "              .attr('stroke', function(){";
-            strVar += "                if (typeof z === 'undefined'){return'black'};";
-            strVar += "                return 'none'";
-            strVar += "              });";
-            strVar += "  });";
-            strVar += "";
-            strVar += "  return canvas;";
-            strVar += "";
-            strVar += "}";
-            strVar += "";
-            strVar += "var x= [1,2,3,4,5];";
-            strVar += "var y= [2,3,4,6,4];";
-            strVar += "var config = {xLab: x, yLab: y, };";
-            strVar += "scatter(x,y,config);";
-            strVar += "";
-            strVar += "<\/script><\/html>";
-
-
-      $http.post('/api/things/createHTML', { fileStr: strVar })
+      $http.post('/api/things/createHTML', data.nateObj)
            .success(function(data, status, headers, config) {
-              var createdHTML = "<object style='width: 100%; height: 700px;'" +
+              $scope.fileStr = data.fileStr;
+              var createdHTML = "<object style='width: 100%; height: 800px;'" +
                          " data='nat.html'></object>";
 
               $('.rendered-graph').append(createdHTML);
            });
      };
 
-     // createFileAndRender();
-     var createdHTML = "<object style='width: 100%; height: 700px;'" +
-                         " data='nat.html'></object>";
+     createFileAndRender();
+     // var createdHTML = "<object style='width: 100%; height: 700px;'" +
+     //                     " data='nat.html'></object>";
 
-              $('.rendered-graph').append(createdHTML);
+     //          $('.rendered-graph').append(createdHTML);
   });

@@ -3,18 +3,20 @@
 angular.module('sphynxApp')
   .factory('data', function () {
 
+    // default initialization
     var nateObj = {
       type: 'histogram',
       twoD: true,
       pointLabels: []
-    }
-    
-    function transpose(arr) {
+    };
+
+    function transpose (arr) {
       var transposed = [];
-      for (var i = 0, ii = arr[0].length; i < ii; i++) {
+      var i, ii;
+      for (i = 0, ii = arr[0].length; i < ii; i++) {
         transposed.push([]);
-      };
-      for (var i = 0, ii = arr.length; i < ii; i++) {
+      }
+      for (i = 0, ii = arr.length; i < ii; i++) {
         for (var j = 0, jj = arr[i].length; j < jj; j++) {
           transposed[j][i] = arr[i][j];
         }
@@ -47,7 +49,7 @@ angular.module('sphynxApp')
         '2' : 'Z',
         '3' : 'size',
         '4' : 'color'
-      }
+      };
       for (var i = 0, ii = arr.length; i < ii; i++) {
         var count = 0;
         for (var j = 0, jj = arr[i].length; j < jj; j++) {
@@ -62,9 +64,9 @@ angular.module('sphynxApp')
           var axisKey = arr[i].shift();
           nateObj[axisKey] = arr[i];
         } else {
-          var k = i
+          var k = i;
           if (pointLabelFlag) {
-            k = i-1
+            k = i-1;
           }
           nateObj[axisHash[k]] = arr[i];
         }
@@ -72,11 +74,15 @@ angular.module('sphynxApp')
       return nateObj;
     }
 
+    function set (rawData, type, twoD) {
+      nateObj.type = type || 'histogram';
+      nateObj.twoD = twoD;
+      return makeNate(clean2D(transpose(Papa.parse(rawData).data)));
+    }
+
     // Public API here
     return {
       nateObj: nateObj,
-      set: function(rawData) {
-        return makeNate(clean2D(transpose(Papa.parse(rawData).data)))
-      }
+      set: set
     };
   });

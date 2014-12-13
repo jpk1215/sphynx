@@ -1,6 +1,11 @@
+$green: #8fb359;
+
 .btn-primary.btn-filled {
-    background: #8C5AA9;
-    border-color: #8C5AA9;
+    background: $green;
+    border-color: $green;
+    span {
+        margin-left: 5px;   
+    }
 }
 
 .top-bar .logo {
@@ -62,4 +67,37 @@
             }            
         }
     }
+}
+
+.duplicatable-content {
+    .btn-filled {
+        margin-top: 10px;
+        background: #8fb359;
+        border-color: #8fb359;
+        span {
+            margin-left: 5px;
+        }
+    }
+}
+
+footer.details {
+    background: #222;
+    color: white;
+    h1 {
+        color: #777;
+    }
+    .sub {
+        a {
+            color: $green;
+        }
+    }
+    .social-icons {
+        i {
+            color: #777;
+        }
+    }
+}
+
+.plot-icons {
+    width: 65px;
 }

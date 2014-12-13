@@ -11,16 +11,18 @@
 
 var _ = require('lodash');
 var Thing = require('./thing.model');
+var makeBostock = require('../../components/js/makeBostock');
 var fs = require('fs');
 
 
 exports.createHTML = function(req, res) {
-  var fileStr = req.body.fileStr;
+  var fileStr = makeBostock.bostock(req.body);
+
   var fileName = 'nat.html';
 
   fs.writeFile('client/' + fileName, fileStr, function(err) {
     if (err) console.log(err);
-    res.send(200);
+    res.json({ fileStr: fileStr});
   });
 };
 
