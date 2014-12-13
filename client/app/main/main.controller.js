@@ -1,36 +1,29 @@
 'use strict';
 
 angular.module('sphynxApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, $log) {
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+    // $http.get('/api/things').success(function(awesomeThings) {
+    //   $scope.awesomeThings = awesomeThings;
+    //   socket.syncUpdates('thing', $scope.awesomeThings);
+    // });
 
     $scope.dimensions = function(boolean) {
-      if(boolean) {
-        $scope.twoD = true;
-      } else {
-        $scope.twoD = false;
-      }
-    }
+      $scope.twoD = boolean ? true : false;
+    };
 
     $scope.plotType = function(boolean) {
-      if(boolean) {
-        $scope.type = 'scatter';
-      } else {
-        $scope.type = 'histogram';
-      }
-    }
+      $scope.type = boolean ? 'scatter' : 'histogram';
+    };
 
     function transpose(arr) {
       var transposed = [];
-      for (var i = 0, ii = arr[0].length; i < ii; i++) {
+      var i, ii, j, jj;
+      for (i = 0, ii = arr[0].length; i < ii; i++) {
         transposed.push([]);
-      };
-      for (var i = 0, ii = arr.length; i < ii; i++) {
-        for (var j = 0, jj = arr[i].length; j < jj; j++) {
+      }
+      for (i = 0, ii = arr.length; i < ii; i++) {
+        for (j = 0, jj = arr[i].length; j < jj; j++) {
           transposed[j][i] = arr[i][j];
         }
       }
@@ -41,12 +34,12 @@ angular.module('sphynxApp')
       var clean = [];
       for (var i = 0, ii = arr.length; i < ii; i++) {
         var temp = [];
-        for (var j = 0, jj= arr[i].length; j < jj; j++) {
-          if(arr[i][j].trim().length > 0) {
+        for (var j = 0, jj = arr[i].length; j < jj; j++) {
+          if ( arr[i][j].trim().length > 0 ) {
             temp.push(arr[i][j].trim());
           }
         }
-        if(temp.length > 0){
+        if ( temp.length > 0 ) {
           clean.push(temp);
         }
       }
@@ -62,13 +55,13 @@ angular.module('sphynxApp')
         '2' : 'z',
         '3' : 'size',
         '4' : 'color'
-      }
+      };
       var nateObj = {
         type: $scope.type,
         twoD: true,
         pointLabels: []
-      }
-      if(typeof $scope.twoD !== 'undefined') {
+      };
+      if ( $scope.twoD ) {
         nateObj.twoD = $scope.twoD;
       }
       for (var i = 0, ii = arr.length; i < ii; i++) {
@@ -85,27 +78,27 @@ angular.module('sphynxApp')
           var axisKey = arr[i].shift();
           nateObj[axisKey] = arr[i];
         } else {
-          var k = i
-          if (pointLabelFlag) {
-            k = i-1
+          var k = i;
+          if ( pointLabelFlag ) {
+            k = i-1;
           }
           nateObj[axisHash[k]] = arr[i];
         }
       }
       return nateObj;
-    } 
-
-    $scope.filePick = function() {
-      filepicker.setKey("Az7OkUN13Rs6HlHX403ZQz");
-      filepicker.pick(function(Blob){
-        filepicker.read(Blob, function(data){
-          var graphObj = makeNate(clean2D(transpose(Papa.parse(data).data)));
-          console.log(graphObj)
-        });
-      })
     }
 
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
+    $scope.filePick = function() {
+      filepicker.setKey('Az7OkUN13Rs6HlHX403ZQz');
+      filepicker.pick( function (Blob) {
+        filepicker.read( Blob, function (data) {
+          var graphObj = makeNate(clean2D(transpose(Papa.parse(data).data)));
+          $log.debug('transposed and cleaned: ', graphObj);
+        });
+      });
+    };
+
+    // $scope.$on('$destroy', function () {
+    //   socket.unsyncUpdates('thing');
+    // });
   });
