@@ -1,12 +1,29 @@
 'use strict';
 
 angular.module('sphynxApp')
-  .controller('MainCtrl', function ($scope, $http, socket, $state, data, $log) {
+  .controller('MainCtrl', function ($scope, $http, socket, $state, $modal, data, $log) {
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-      socket.syncUpdates('thing', $scope.awesomeThings);
-    });
+    // $http.get('/api/things').success(function(awesomeThings) {
+    //   $scope.awesomeThings = awesomeThings;
+    //   socket.syncUpdates('thing', $scope.awesomeThings);
+    // });
+
+    $scope.open = function () {
+
+      var modalInstance = $modal.open({
+        templateUrl: 'app/main/main.modal.html',
+        controller: 'MainCtrl',
+        size: 'lg'
+      });
+
+      console.log("Asdasdasd");
+
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
 
     console.log(data.nateObj);
 
@@ -34,10 +51,6 @@ angular.module('sphynxApp')
           $log.debug(data.nateObj)
           $state.go('parent.view');
         });
-      })
-    }
-
-    $scope.$on('$destroy', function () {
-      socket.unsyncUpdates('thing');
-    });
+      });
+    };
   });
