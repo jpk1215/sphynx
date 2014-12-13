@@ -8,7 +8,7 @@ angular.module('sphynxApp')
       filepicker.pick(function(Blob){
         filepicker.read(Blob, function(rawData){
           data.set(rawData, type, twoD);
-          $log.debug(data.nateObj);
+          console.log(data.nateObj);
           $state.go('parent.view');
         });
       });
