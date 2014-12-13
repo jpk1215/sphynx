@@ -37,16 +37,17 @@ $green: #8fb359;
     .rendered-graph {
         padding: 15px;
         margin-top: 30px;
-        height: 400px;
-        background: #333;
+        height: 530px;
+        background: #ccc;
     }
     .rendered-html {
         margin-top: 30px;
-        height: 400px;
+        height: 530px;
         background: #333;
         padding: 15px;
+        font-size: 12px;
         textarea {
-            height: 80%;
+            height: 90%;
             width: 100%;
             overflow: auto;
             background: #333;
@@ -59,11 +60,10 @@ $green: #8fb359;
             }
         }
         .btn-box {
-            height: 20%;
+            height: 10%;
             a {
                 position: relative;
                 display: block;
-                bottom: -25px;
             }            
         }
     }
