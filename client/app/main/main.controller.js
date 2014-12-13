@@ -1,12 +1,29 @@
 'use strict';
 
 angular.module('sphynxApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, $modal, $log) {
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;
       socket.syncUpdates('thing', $scope.awesomeThings);
     });
+
+    $scope.open = function () {
+
+      var modalInstance = $modal.open({
+        templateUrl: 'app/main/main.modal.html',
+        controller: 'MainCtrl',
+        size: 'lg'
+      });
+
+      console.log("Asdasdasd");
+
+      modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+      }, function () {
+        $log.info('Modal dismissed at: ' + new Date());
+      });
+    };
 
     $scope.dimensions = function(boolean) {
       if(boolean) {
