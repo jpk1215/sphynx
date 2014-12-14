@@ -16,7 +16,7 @@
 					<div class="rendered-html"</div>
 						<textarea onclick="this.focus();this.select()" readonly="readonly">{{fileStr}}</textarea>
 						<div class="btn-box">
-							<a class="btn btn-primary">Copy Selected Text</a>
+							<a class="btn btn-primary">Copy to Clipboard</a>
 						</div>
 					</div>
 				</div>
@@ -29,7 +29,7 @@
 			<div class="row clearfix">
 				<form class="mail-list-signup">
 					<div class="col-sm-9 col-xs-12 pull-left clear-fix">
-						<h3 class="text-white pull-left"><strong>Get Notified.&nbsp;</strong></h3>
+						<h3 class="text-white pull-left"><strong>Get Updates:&nbsp;</strong></h3>
 						<input type="text" class="signup-email-field validate-email validate-required" placeholder="Enter your email here here">
 					</div>
 
@@ -52,52 +52,51 @@
 				<div class="col-sm-4">
 					<div class="feature feature-icon-large">
 						<div class="pull-left">
-							<i class="icon icon-genius"></i>
+							<img src="assets/img/plot-histogram.png" class="plot-icons">
 						</div>
 						<div class="pull-right">
-							<h5>Distinct Visual Style</h5>
+							<h5>Histogram</h5>
 							<p>
-								Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+								A histogram is a graphical representation of the distribution of data. It is an estimate of the probability distribution of a continuous variable.
 							</p>
+							<a class="btn btn-xs btn-primary btn-filled" ng-click="filePick('histogram', true)">Generate <span class="glyphicon glyphicon-arrow-right"></span></a>
 						</div>
 					</div>
-				</div>
-				<!--end 6 col-->
+				</div><!--end 6 col-->
 
 				<div class="col-sm-4">
 					<div class="feature feature-icon-large">
 						<div class="pull-left">
-							<i class="icon icon-linegraph"></i>
+							<img src="assets/img/plot-scatter-2d.png" class="plot-icons">
 						</div>
 						<div class="pull-right">
-							<h5>Multiple Demos</h5>
+							<h5>2D Scatter Plot</h5>
 							<p>
-								Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+								A scatter plot, scatterplot is a type of  diagram using Cartesian coordinates to display values for two variables for a set of data.
 							</p>
+							<a class="btn btn-xs btn-primary btn-filled" ng-click="filePick('scatter', true)">Generate <span class="glyphicon glyphicon-arrow-right"></span></a>
 						</div>
 					</div>
-				</div>
-				<!--end 6 col-->
+				</div><!--end 6 col-->
 
 				<div class="col-sm-4">
 					<div class="feature feature-icon-large">
 						<div class="pull-left">
-							<i class="icon icon-tools-2"></i>
+							<img src="assets/img/plot-scatter-3d.png" class="plot-icons">
 						</div>
 						<div class="pull-right">
-							<h5>Flexible Page Builder</h5>
+							<h5>3D Scatter Plot</h5>
 							<p>
-								Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.
+								A 3D scatter plot, scatterplot is a type of mathematical diagram using Cartesian coordinates to display values for three variables for a set of data.
 							</p>
+							<a class="btn btn-xs btn-primary btn-filled" ng-click="filePick('scatter', false)">Generate <span class="glyphicon glyphicon-arrow-right"></span></a>
 						</div>
 					</div>
-				</div>
-				<!--end 6 col-->
+				</div><!--end 6 col-->
 
 				<!--end 6 col-->
 
-			</div>
-			<!--end of row-->
+			</div><!--end of row-->
 		</div>
 
 	</section>
