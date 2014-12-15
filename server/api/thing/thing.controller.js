@@ -12,17 +12,14 @@
 var _ = require('lodash');
 var Thing = require('./thing.model');
 var makeBostock = require('../../components/js/makeBostock');
-var fs = require('fs');
 
 
 exports.createHTML = function(req, res) {
   var fileStr = makeBostock.bostock(req.body);
 
-  var fileName = 'nat.html';
-  console.log(fileStr);
-  fs.writeFile('client/' + fileName, fileStr, function(err) {
+  Thing.create({fileStr: fileStr}, function(err, thing) {
     if (err) console.log(err);
-    res.json({ fileStr: fileStr});
+    res.json(thing);
   });
 };
 
@@ -39,7 +36,7 @@ exports.show = function(req, res) {
   Thing.findById(req.params.id, function (err, thing) {
     if(err) { return handleError(res, err); }
     if(!thing) { return res.send(404); }
-    return res.json(thing);
+    return res.send(thing.fileStr);
   });
 };
 
@@ -63,7 +60,7 @@ exports.update = function(req, res) {
       return res.json(200, thing);
     });
   });
-};
+}; 
 
 // Deletes a thing from the DB.
 exports.destroy = function(req, res) {

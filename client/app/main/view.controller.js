@@ -7,7 +7,7 @@ angular.module('sphynxApp')
            .success(function(data, status, headers, config) {
               $scope.fileStr = data.fileStr;
               var createdHTML = "<object style='width: 100%; height: 800px;'" +
-                         " data='nat.html'></object>";
+                         " data='api/things/"+data._id+"'></object>";
 
               $('.rendered-graph').append(createdHTML);
            });
